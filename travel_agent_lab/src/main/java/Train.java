@@ -5,11 +5,13 @@ public class Train implements Bookable{
     private double price;
     private int capacity;
     private ArrayList<Customer> customers;
+    private TravelClass travelClass;
 
     public Train(double price, int capacity){
         this.price = price;
         this.capacity = capacity;
         this.customers = new ArrayList<>();
+        this.travelClass = null;
     }
 
     public void book(Customer customer){
@@ -18,6 +20,19 @@ public class Train implements Bookable{
             this.addToCustomerList(customer);
             this.reduceCapacityByOne();
         }
+    }
+
+    public void book(Customer customer, String ticketType){
+        if(this.hasCapacity()){
+            this.setPrice(ticketType);
+            customer.payFromWallet(this.price);
+            this.addToCustomerList(customer);
+            this.reduceCapacityByOne();
+        }
+    }
+
+    public void setTravelClass(String tickeType){
+        this.travelClass = TravelClass.valueOf(tickeType);
     }
 
     public void cancel(Customer customer){
@@ -30,8 +45,16 @@ public class Train implements Bookable{
         return this.price;
     }
 
-    public void setPrice(double newPrice){
-        this.price = newPrice;
+    public void setPrice(String travelType){
+        this.setTravelClass(travelType);
+        switch (this.travelClass.name()) {
+            case "FIRSTCLASS":
+                this.price = 200.00;
+                break;
+            case "ECONOMYCLASS":
+                this.price = 50.00;
+        }
+
     }
 
     public int getCapacity(){

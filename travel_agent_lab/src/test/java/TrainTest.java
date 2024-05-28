@@ -24,8 +24,10 @@ public class TrainTest {
 
     @Test
     public void canSetPrice(){
-        train.setPrice(200.00);
+        train.setPrice("FIRSTCLASS");
         assertThat(train.getPrice()).isEqualTo(200.00);
+        train.setPrice("ECONOMYCLASS");
+        assertThat(train.getPrice()).isEqualTo(50.00);
     }
 
     @Test
@@ -94,6 +96,13 @@ public class TrainTest {
     public void canBook(){
         train.book(fisrtCustomer);
         assertThat(fisrtCustomer.getWalletAmount()).isEqualTo(900.00);
+        assertThat(train.getCustomerFromList(1)).isEqualTo(fisrtCustomer);
+        assertThat(train.getCapacity()).isEqualTo(199);
+    }
+
+    public void canBook_withTicketType(){
+        train.book(fisrtCustomer, "FIRSTCLASS");
+        assertThat(fisrtCustomer.getWalletAmount()).isEqualTo(800.00);
         assertThat(train.getCustomerFromList(1)).isEqualTo(fisrtCustomer);
         assertThat(train.getCapacity()).isEqualTo(199);
     }
