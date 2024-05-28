@@ -7,9 +7,9 @@ public class Customer {
 
 
 
-    public Customer(String name){
+    public Customer(String name, double wallet){
         this.name = name;
-        this.wallet = 0.0;
+        this.wallet = wallet;
     }
 
     public String getName(){

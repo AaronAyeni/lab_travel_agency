@@ -12,7 +12,8 @@ public class CustomerTest {
 
     public void setUp(){
 
-        customer = new Customer("John");
+        customer = new Customer("John",100.0);
+
 
 
     }
