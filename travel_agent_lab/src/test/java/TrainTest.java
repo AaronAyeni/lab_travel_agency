@@ -1,11 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TrainTest {
+
 
     Train train;
     Customer fisrtCustomer;
@@ -108,8 +107,6 @@ public class TrainTest {
         assertThat(train.countCustomers()).isEqualTo(1);
         assertThat(train.getCapacity()).isEqualTo(199);
     }
-
-
 
 
 }

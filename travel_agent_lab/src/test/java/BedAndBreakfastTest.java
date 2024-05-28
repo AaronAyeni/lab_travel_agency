@@ -76,4 +76,5 @@ public class BedAndBreakfastTest {
         assertThat(bedAndBreakfast.hasCapacity()).isEqualTo(false);
     }
 
+
 }

@@ -17,7 +17,11 @@ public class Customer {
     }
 
     public void setName(String newName){
-        this.name = newName;
+        if (newName.isEmpty()){
+            throw new IllegalArgumentException("Customer name cannot be empty!");
+        } else {
+            this.name = newName;
+        }
     }
 
     public double getWalletAmount(){
@@ -25,16 +29,18 @@ public class Customer {
     }
 
     public void addToWallet(double amount){
-        this.wallet += amount;
+        if (amount < 0){
+            throw new ArithmeticException("Please provide valid amount");
+        } else {
+            this.wallet += amount;
+        }
     }
 
     public void payFromWallet(double amount) {
-        if (this.canAfford(amount)) {
+        if (this.canAfford(amount) && amount>0) {
             this.wallet -= amount;
         } else {
-            System.out.println("Please add more money");
-
-
+            throw new ArithmeticException("Please provide valid amount!");
         }
 
     }
@@ -45,7 +51,7 @@ public class Customer {
         }
 
         else{
-            return false;
+            throw new ArithmeticException("The wallet does not have sufficient money!");
         }
     }
 
