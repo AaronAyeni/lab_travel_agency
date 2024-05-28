@@ -37,9 +37,9 @@ public class BedAndBreakfastTest {
     }
 
     @Test
-    public void canReduceCapacity(){
-        bedAndBreakfast.reduceCapacity(3);
-        assertThat(bedAndBreakfast.getCapacity()).isEqualTo(1);
+    public void canReduceCapacityByOne(){
+        bedAndBreakfast.reduceCapacityByOne();
+        assertThat(bedAndBreakfast.getCapacity()).isEqualTo(3);
     }
 
     @Test

@@ -36,7 +36,7 @@ public class CustomerTest {
     @Test
 
     public void canGetWalletAmount(){
-        assertThat(customer.getWalletAmount()).isEqualTo(0.0);
+        assertThat(customer.getWalletAmount()).isEqualTo(100.00);
     }
 
 
@@ -44,7 +44,7 @@ public class CustomerTest {
 
     public void canSetWalletAmount(){
         customer.addToWallet(5.0);
-        assertThat(customer.getWalletAmount()).isEqualTo(5.0);
+        assertThat(customer.getWalletAmount()).isEqualTo(105.00);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class CustomerTest {
     public void canPayFromWalletAmount(){
         customer.addToWallet(10);
         customer.payFromWallet(5);
-        assertThat(customer.getWalletAmount()).isEqualTo(5);
+        assertThat(customer.getWalletAmount()).isEqualTo(105.00);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class CustomerTest {
     public void checkCanAfford(){
         customer.addToWallet(10);
         assertThat(customer.canAfford(5)).isEqualTo(true);
-        assertThat(customer.canAfford(20)).isEqualTo(false);
+        assertThat(customer.canAfford(200)).isEqualTo(false);
     }
 
 

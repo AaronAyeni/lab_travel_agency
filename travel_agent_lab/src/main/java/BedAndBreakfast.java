@@ -22,9 +22,14 @@ public class BedAndBreakfast implements Bookable {
         return this.capacity;
     }
 
-    public void reduceCapacity(int noOfCustomers){
-        this.capacity -= noOfCustomers;
+    public void reduceCapacityByOne(){
+        this.capacity -= 1;
     }
+
+    public void increaseCapacityByOne(){
+        this.capacity += 1;
+    }
+
     public void setCapacity(int noOfRooms){
         this.capacity = noOfRooms;
     }
@@ -38,12 +43,12 @@ public class BedAndBreakfast implements Bookable {
 
     public void book(Customer customer){
         customer.payFromWallet(this.price);
-        this.reduceCapacity(1);
+        this.reduceCapacityByOne();
     }
 
     public void cancel(Customer customer){
         customer.addToWallet(this.price);
-        this.reduceCapacity(-1);
+        this.increaseCapacityByOne();
     }
 
     public boolean hasCapacity(){
